@@ -132,33 +132,16 @@ export default function Navbar() {
                                 <Package2 className="h-6 w-6" />
                                 <span className="sr-only">Acme Inc</span>
                             </Link>
-                            <Link href="#" className="hover:text-foreground">
-                                Dashboard
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
-                                Orders
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
-                                Products
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
-                                Customers
-                            </Link>
-                            <Link
-                                href="#"
-                                className="text-muted-foreground hover:text-foreground"
-                            >
-                                Analytics
-                            </Link>
+                            {
+                                navbar_link.map((el, i: number) => {
+                                    return <Link key={i}
+                                        href={el.href}
+                                        className={cn("transition-colors hover:text-foreground", pathname === el.href ? "text-foreground" : "text-muted-foreground")}
+                                    >
+                                        {el.title}
+                                    </Link>
+                                })
+                            }
                         </nav>
                     </SheetContent>
                 </Sheet>

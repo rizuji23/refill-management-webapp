@@ -1,4 +1,5 @@
-import { SlashIcon } from "lucide-react";
+"use client"
+import { ChevronLeft, SlashIcon } from "lucide-react";
 import { Separator } from "./ui/separator";
 import {
     Breadcrumb,
@@ -8,8 +9,12 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
-export default function TitlePage({ title, desc = "", children = <></> }: { title: string, desc?: string, children?: React.ReactNode }) {
+export default function TitlePage({ title, desc = "", children = <></>, back = false }: { title: string, desc?: string, children?: React.ReactNode, back?: boolean }) {
+    const router = useRouter();
+
     return (
         <>
             <div>
@@ -34,7 +39,13 @@ export default function TitlePage({ title, desc = "", children = <></> }: { titl
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
-                <div className="flex">
+                <div className="flex gap-4">
+                    {
+                        back === true && <Button variant="outline" onClick={() => router.back()} size="icon" className="h-7 w-7 self-center">
+                            <ChevronLeft className="h-4 w-4" />
+                            <span className="sr-only">Back</span>
+                        </Button>
+                    }
                     <div className="flex flex-col gap-3">
                         <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
                         {
