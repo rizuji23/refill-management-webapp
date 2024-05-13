@@ -7,6 +7,7 @@ import { ListView } from "./ListView"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import Link from "next/link";
 import { DataAvatarGroup } from "./types";
+import { cn } from "@/lib/utils";
 
 const data_teams: Array<DataAvatarGroup> = [
     {
@@ -27,7 +28,17 @@ const data_teams: Array<DataAvatarGroup> = [
     }
 ]
 
-export default function AvatarGroup() {
+export default function AvatarGroup({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+    const sizeAvatar = () => {
+        if (size === "sm") {
+            return "size-[26px]"
+        } else if (size === "md") {
+            return "size-[36px]"
+        } else {
+            return "size-[46px]"
+        }
+    }
+
     return (
         <>
             <div className="flex -space-x-2">
@@ -36,7 +47,7 @@ export default function AvatarGroup() {
                         return <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link href={"#"}>
-                                    <img className="inline-block size-[36px] rounded-full ring-2 ring-white dark:ring-neutral-900" src={el.src} alt={el.name} />
+                                    <img className={cn(`inline-block rounded-full ring-2 ring-white dark:ring-neutral-900`, sizeAvatar())} src={el.src} alt={el.name} />
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent>
@@ -50,7 +61,7 @@ export default function AvatarGroup() {
                 <div className="relative inline-flex">
                     <Popover>
                         <PopoverTrigger asChild>
-                            <button id="hs-avatar-group-dropdown" className="hs-dropdown-toggle inline-flex items-center justify-center size-[36px] rounded-full bg-white border-2 border-white font-medium text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800">
+                            <button id="hs-avatar-group-dropdown" className={cn("hs-dropdown-toggle inline-flex items-center justify-center rounded-full bg-white border-2 border-white font-medium text-gray-700 shadow-sm align-middle hover:bg-gray-300 focus:outline-none focus:bg-blue-100 focus:text-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white dark:focus:bg-blue-100 dark:focus:text-blue-600 dark:focus:ring-offset-gray-800", sizeAvatar())}>
                                 <span className="font-medium leading-none">9+</span>
                             </button>
                         </PopoverTrigger>

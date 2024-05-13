@@ -16,7 +16,6 @@ export default function Notification() {
         <>
             <Popover>
                 <PopoverTrigger asChild>
-
                     <div className="relative">
                         <div className="absolute right-0">
                             <span className="relative flex h-3 w-3">
@@ -30,7 +29,11 @@ export default function Notification() {
                         </Button>
                     </div>
                 </PopoverTrigger>
-                <PopoverContent className="p-1 min-w-[400px]">
+                <PopoverContent className="p-1 min-w-[400px] !shadow-md !bg-background/95 !backdrop-blur !supports-[backdrop-filter]:bg-background/60" collisionPadding={{ right: 10 }} sideOffset={10}>
+                    <div className="flex justify-between py-2 px-2">
+                        <h5 className="text-sm font-medium">Notification</h5>
+                        <small className="text-muted-foreground hover:underline cursor-pointer">Mark all as read</small>
+                    </div>
                     <ScrollArea className="h-72 p-2 pb-0">
                         <div className="flex flex-col gap-3">
                             {
@@ -51,7 +54,6 @@ export default function Notification() {
                             }
                         </div>
                     </ScrollArea>
-                    <Button className="w-full" size={'sm'} variant={"ghost"}>Mark all read</Button>
                 </PopoverContent>
             </Popover>
 

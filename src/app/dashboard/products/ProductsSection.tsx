@@ -13,18 +13,15 @@ import TitlePage from "@/components/TitlePage"
 import { Button } from "@/components/ui/button"
 import { File, ListFilter, PlusCircle } from "lucide-react"
 
-export default function ProductsSection() {
+export default function OverviewProducts() {
     return (
         <>
-            <Tabs defaultValue="all" className="w-[400px]">
-                <TabsList>
-                    <TabsTrigger value="all">All</TabsTrigger>
-                    <TabsTrigger value="active">By Projects</TabsTrigger>
-                    <TabsTrigger value="archived">Archived</TabsTrigger>
-                </TabsList>
-                <TabsContent value="all">Make changes to your account here.</TabsContent>
-                <TabsContent value="active">Change your password here.</TabsContent>
-            </Tabs>
+            <div className="flex flex-col gap-5">
+                <div className="flex gap-3 ml-auto self-center">
+                    <Button variant={"outline"} size={"sm"}><ListFilter size={14} className="mr-2" /> Filter</Button>
+                    <Button variant={"outline"} size={"sm"}><File size={14} className="mr-2" /> Export</Button>
+                </div>
+            </div>
         </>
     )
 }

@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 
 const sidebarNavItems = [
     {
-        title: "List Projects",
+        title: "Overview",
         href: "/dashboard/projects",
+    },
+    {
+        title: "List Projects",
+        href: "/dashboard/projects/list",
     },
     {
         title: "Contact",
         href: "/dashboard/projects/contacts",
-    },
-    {
-        title: "Unit",
-        href: "/dashboard/projects/unit",
     },
 ]
 

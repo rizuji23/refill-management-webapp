@@ -24,13 +24,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-export function DrawerDialog({ title, desc = "", children, open, setOpen }: { title: string, desc?: string, children: React.ReactNode, open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
+export function DrawerDialog({ title, desc = "", children, open, setOpen, max_length = "max-w-[425px]" }: { title: string, desc?: string, children: React.ReactNode, open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, max_length?: string }) {
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className={cn(max_length)}>
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>

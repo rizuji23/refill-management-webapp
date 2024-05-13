@@ -12,11 +12,12 @@ import {
 import TitlePage from "@/components/TitlePage"
 import { Button } from "@/components/ui/button"
 import { File, ListFilter, PlusCircle } from "lucide-react"
+import TableProjects from "../data/table_projects"
 
 export default function ProjectsSection() {
     return (
         <>
-            <Tabs defaultValue="all" className="w-[400px]">
+            <Tabs defaultValue="all">
                 <TabsList>
                     <TabsTrigger value="all">All</TabsTrigger>
                     <TabsTrigger value="active">Active</TabsTrigger>
@@ -24,7 +25,9 @@ export default function ProjectsSection() {
                     <TabsTrigger value="draf">Draf</TabsTrigger>
                     <TabsTrigger value="archived">Archived</TabsTrigger>
                 </TabsList>
-                <TabsContent value="all">Make changes to your account here.</TabsContent>
+                <TabsContent value="all">
+                    <TableProjects />
+                </TabsContent>
                 <TabsContent value="active">Change your password here.</TabsContent>
             </Tabs>
         </>

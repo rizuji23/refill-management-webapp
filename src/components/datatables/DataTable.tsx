@@ -27,15 +27,34 @@ import {
 
 import { DataTablePagination } from "./data-table-pagination"
 import { DataTableToolbar } from "./data-table-toolbar"
+import { IconProps } from "@radix-ui/react-icons/dist/types"
+
+export interface IOptionsFilter {
+    label: string
+    value: string
+    icon?: React.ComponentType<{ className?: string }>
+}
+
+export interface IFilterToolbar {
+    column: string
+    title: string
+    options: Array<IOptionsFilter>
+}
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+    data: TData[],
+    filter_data?: undefined | Array<IFilterToolbar>,
+    search_placeholder?: string,
+    search_columns?: string
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    filter_data = undefined,
+    search_placeholder = "",
+    search_columns = ""
 }: DataTableProps<TData, TValue>) {
     const [rowSelection, setRowSelection] = React.useState({})
     const [columnVisibility, setColumnVisibility] =
@@ -69,7 +88,7 @@ export function DataTable<TData, TValue>({
 
     return (
         <div className="space-y-4">
-            <DataTableToolbar table={table} />
+            <DataTableToolbar table={table} filter_data={filter_data} search_placeholder={search_placeholder} search_columns={search_columns} />
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>
